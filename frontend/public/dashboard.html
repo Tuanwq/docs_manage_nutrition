@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Nutrition Management</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>🥗 Nutrition Manager</h2>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="/dashboard" class="nav-item active">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="/foods" class="nav-item">
+                <span class="nav-icon">🍎</span>
+                <span class="nav-text">Thực phẩm</span>
+            </a>
+            <a href="#" class="nav-item" id="profile-nav">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Hồ sơ</span>
+            </a>
+            <a href="#" class="nav-item" id="settings-nav">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Cài đặt</span>
+            </a>
+            <a href="#" class="nav-item" id="logout-nav">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">Đăng xuất</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1>Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="date-picker">
+                    <input type="date" id="date-selector" class="date-input">
+                </div>
+                <div class="user-info">
+                    <span class="user-greeting">Xin chào, <span id="user-name">...</span></span>
+                    <div class="user-avatar" id="user-avatar">👤</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Quick Stats -->
+            <section class="quick-stats">
+                <div class="stat-card calories">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-info">
+                        <h3>Calories</h3>
+                        <div class="stat-value">
+                            <span id="calories-consumed">0</span>
+                            <span class="stat-target"> / <span id="calories-target">2000</span></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" id="calories-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card protein">
+                    <div class="stat-icon">🥩</div>
+                    <div class="stat-info">
+                        <h3>Protein</h3>
+                        <div class="stat-value">
+                            <span id="protein-consumed">0g</span>
+                            <span class="stat-target"> / <span id="protein-target">100g</span></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" id="protein-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card carbs">
+                    <div class="stat-icon">🍞</div>
+                    <div class="stat-info">
+                        <h3>Carbs</h3>
+                        <div class="stat-value">
+                            <span id="carbs-consumed">0g</span>
+                            <span class="stat-target"> / <span id="carbs-target">250g</span></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" id="carbs-progress"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stat-card fat">
+                    <div class="stat-icon">🥑</div>
+                    <div class="stat-info">
+                        <h3>Fat</h3>
+                        <div class="stat-value">
+                            <span id="fat-consumed">0g</span>
+                            <span class="stat-target"> / <span id="fat-target">67g</span></span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" id="fat-progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meals Section -->
+            <section class="meals-section">
+                <div class="section-header">
+                    <h2>Bữa ăn hôm nay</h2>
+                    <button class="btn btn-primary" id="add-meal-btn">+ Thêm món ăn</button>
+                </div>
+
+                <!-- Meal Cards -->
+                <div class="meals-container">
+                    <div class="meal-card" data-meal-type="breakfast">
+                        <div class="meal-header">
+                            <h3>🌅 Bữa sáng</h3>
+                            <span class="meal-calories">
+                                <span id="breakfast-calories">0</span> calories
+                            </span>
+                        </div>
+                        <div class="meal-foods" id="breakfast-foods">
+                            <div class="empty-meal">
+                                <p>Chưa có món ăn nào</p>
+                                <button class="btn btn-outline btn-small add-food-btn" data-meal-type="breakfast">
+                                    + Thêm món ăn
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="meal-card" data-meal-type="lunch">
+                        <div class="meal-header">
+                            <h3>☀️ Bữa trưa</h3>
+                            <span class="meal-calories">
+                                <span id="lunch-calories">0</span> calories
+                            </span>
+                        </div>
+                        <div class="meal-foods" id="lunch-foods">
+                            <div class="empty-meal">
+                                <p>Chưa có món ăn nào</p>
+                                <button class="btn btn-outline btn-small add-food-btn" data-meal-type="lunch">
+                                    + Thêm món ăn
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="meal-card" data-meal-type="dinner">
+                        <div class="meal-header">
+                            <h3>🌙 Bữa tối</h3>
+                            <span class="meal-calories">
+                                <span id="dinner-calories">0</span> calories
+                            </span>
+                        </div>
+                        <div class="meal-foods" id="dinner-foods">
+                            <div class="empty-meal">
+                                <p>Chưa có món ăn nào</p>
+                                <button class="btn btn-outline btn-small add-food-btn" data-meal-type="dinner">
+                                    + Thêm món ăn
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="meal-card" data-meal-type="snack">
+                        <div class="meal-header">
+                            <h3>🍪 Ăn vặt</h3>
+                            <span class="meal-calories">
+                                <span id="snack-calories">0</span> calories
+                            </span>
+                        </div>
+                        <div class="meal-foods" id="snack-foods">
+                            <div class="empty-meal">
+                                <p>Chưa có món ăn nào</p>
+                                <button class="btn btn-outline btn-small add-food-btn" data-meal-type="snack">
+                                    + Thêm món ăn
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="recent-activity">
+                <div class="section-header">
+                    <h2>Hoạt động gần đây</h2>
+                    <a href="#" class="view-all">Xem tất cả</a>
+                </div>
+                <div class="activity-list" id="activity-list">
+                    <div class="activity-item loading">
+                        <div class="activity-icon">📊</div>
+                        <div class="activity-info">
+                            <p>Đang tải dữ liệu...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Add Meal Modal -->
+    <div class="modal" id="add-meal-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Thêm món ăn</h3>
+                <button class="modal-close" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="add-meal-form">
+                    <div class="form-group">
+                        <label for="meal-type">Loại bữa ăn</label>
+                        <select id="meal-type" name="meal_type" required>
+                            <option value="breakfast">🌅 Bữa sáng</option>
+                            <option value="lunch">☀️ Bữa trưa</option>
+                            <option value="dinner">🌙 Bữa tối</option>
+                            <option value="snack">🍪 Ăn vặt</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="food-search">Tìm kiếm thực phẩm</label>
+                        <input 
+                            type="text" 
+                            id="food-search" 
+                            placeholder="Nhập tên thực phẩm..."
+                            autocomplete="off"
+                        >
+                        <div class="search-results" id="search-results"></div>
+                    </div>
+
+                    <div class="selected-food" id="selected-food" style="display: none;">
+                        <div class="food-info">
+                            <h4 id="selected-food-name">Tên thực phẩm</h4>
+                            <p id="selected-food-calories">0 calories / 100g</p>
+                        </div>
+                        <button type="button" class="btn btn-outline btn-small" id="clear-selection">
+                            Xóa chọn
+                        </button>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Khối lượng (gram)</label>
+                        <input 
+                            type="number" 
+                            id="quantity" 
+                            name="quantity" 
+                            placeholder="Nhập khối lượng..."
+                            min="1"
+                            step="0.1"
+                            required
+                        >
+                    </div>
+
+                    <div class="nutrition-preview" id="nutrition-preview" style="display: none;">
+                        <h4>Dinh dưỡng ước tính:</h4>
+                        <div class="nutrition-grid">
+                            <div class="nutrition-item">
+                                <span class="label">Calories:</span>
+                                <span class="value" id="preview-calories">0</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="label">Protein:</span>
+                                <span class="value" id="preview-protein">0g</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="label">Carbs:</span>
+                                <span class="value" id="preview-carbs">0g</span>
+                            </div>
+                            <div class="nutrition-item">
+                                <span class="label">Fat:</span>
+                                <span class="value" id="preview-fat">0g</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-outline" id="cancel-add-meal">
+                            Hủy
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="save-meal-btn">
+                            <span class="btn-text">Thêm món ăn</span>
+                            <span class="btn-loading" style="display: none;">
+                                <span class="spinner"></span>
+                                Đang lưu...
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Đang tải dữ liệu...</p>
+        </div>
+    </div>
+
+    <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/auth.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            DashboardManager.init();
+        });
+    </script>
+</body>
+</html>

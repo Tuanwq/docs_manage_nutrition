@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý thực phẩm - Nutrition Management</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>🥗 Nutrition Manager</h2>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="/dashboard" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="/foods" class="nav-item active">
+                <span class="nav-icon">🍎</span>
+                <span class="nav-text">Thực phẩm</span>
+            </a>
+            <a href="#" class="nav-item" id="profile-nav">
+                <span class="nav-icon">👤</span>
+                <span class="nav-text">Hồ sơ</span>
+            </a>
+            <a href="#" class="nav-item" id="settings-nav">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Cài đặt</span>
+            </a>
+            <a href="#" class="nav-item" id="logout-nav">
+                <span class="nav-icon">🚪</span>
+                <span class="nav-text">Đăng xuất</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <h1>Quản lý thực phẩm</h1>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-primary" id="add-food-btn">
+                    + Thêm thực phẩm mới
+                </button>
+            </div>
+        </header>
+
+        <!-- Foods Content -->
+        <div class="foods-content">
+            <!-- Search and Filters -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="food-search" 
+                            placeholder="Tìm kiếm thực phẩm..."
+                            autocomplete="off"
+                        >
+                        <button class="search-btn" id="search-btn">🔍</button>
+                    </div>
+                    <div class="filters">
+                        <select id="category-filter">
+                            <option value="">Tất cả danh mục</option>
+                            <option value="grains">Ngũ cốc & Tinh bột</option>
+                            <option value="protein">Protein</option>
+                            <option value="vegetables">Rau củ</option>
+                            <option value="fruits">Trái cây</option>
+                            <option value="dairy">Sữa & Chế phẩm</option>
+                            <option value="beverages">Đồ uống</option>
+                            <option value="snacks">Đồ ăn vặt</option>
+                            <option value="other">Khác</option>
+                        </select>
+                        <select id="sort-by">
+                            <option value="name">Sắp xếp theo tên</option>
+                            <option value="calories_per_100g">Sắp xếp theo calories</option>
+                            <option value="protein_per_100g">Sắp xếp theo protein</option>
+                            <option value="created_at">Mới nhất</option>
+                        </select>
+                        <button class="btn btn-outline" id="clear-filters">Xóa bộ lọc</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Food Categories -->
+            <section class="categories-section">
+                <h2>Danh mục thực phẩm</h2>
+                <div class="categories-grid" id="categories-grid">
+                    <div class="category-card" data-category="grains">
+                        <div class="category-icon">🌾</div>
+                        <h3>Ngũ cốc & Tinh bột</h3>
+                        <p class="category-count">0 thực phẩm</p>
+                    </div>
+                    <div class="category-card" data-category="protein">
+                        <div class="category-icon">🥩</div>
+                        <h3>Protein</h3>
+                        <p class="category-count">0 thực phẩm</p>
+                    </div>
+                    <div class="category-card" data-category="vegetables">
+                        <div class="category-icon">🥬</div>
+                        <h3>Rau củ</h3>
+                        <p class="category-count">0 thực phẩm</p>
+                    </div>
+                    <div class="category-card" data-category="fruits">
+                        <div class="category-icon">🍎</div>
+                        <h3>Trái cây</h3>
+                        <p class="category-count">0 thực phẩm</p>
+                    </div>
+                    <div class="category-card" data-category="dairy">
+                        <div class="category-icon">🥛</div>
+                        <h3>Sữa & Chế phẩm</h3>
+                        <p class="category-count">0 thực phẩm</p>
+                    </div>
+                    <div class="category-card" data-category="beverages">
+                        <div class="category-icon">🥤</div>
+                        <h3>Đồ uống</h3>
+                        <p class="category-count">0 thực phẩm</p>
+                    </div>
+                    <div class="category-card" data-category="snacks">
+                        <div class="category-icon">🍪</div>
+                        <h3>Đồ ăn vặt</h3>
+                        <p class="category-count">0 thực phẩm</p>
+                    </div>
+                    <div class="category-card" data-category="other">
+                        <div class="category-icon">🍽️</div>
+                        <h3>Khác</h3>
+                        <p class="category-count">0 thực phẩm</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Foods List -->
+            <section class="foods-list-section">
+                <div class="section-header">
+                    <h2>Danh sách thực phẩm</h2>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="grid" id="grid-view">
+                            <span>⊞</span> Lưới
+                        </button>
+                        <button class="view-btn" data-view="list" id="list-view">
+                            <span>☰</span> Danh sách
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading State -->
+                <div class="loading-state" id="foods-loading">
+                    <div class="spinner"></div>
+                    <p>Đang tải danh sách thực phẩm...</p>
+                </div>
+
+                <!-- Foods Grid -->
+                <div class="foods-grid" id="foods-grid" style="display: none;">
+                    <!-- Food cards will be populated here -->
+                </div>
+
+                <!-- Foods List -->
+                <div class="foods-list" id="foods-list" style="display: none;">
+                    <div class="foods-table">
+                        <div class="table-header">
+                            <div class="col-name">Tên thực phẩm</div>
+                            <div class="col-category">Danh mục</div>
+                            <div class="col-calories">Calories</div>
+                            <div class="col-protein">Protein</div>
+                            <div class="col-carbs">Carbs</div>
+                            <div class="col-fat">Fat</div>
+                            <div class="col-actions">Thao tác</div>
+                        </div>
+                        <div class="table-body" id="foods-table-body">
+                            <!-- Food rows will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-state" id="foods-empty" style="display: none;">
+                    <div class="empty-icon">🍽️</div>
+                    <h3>Không tìm thấy thực phẩm</h3>
+                    <p>Thử thay đổi từ khóa tìm kiếm hoặc bộ lọc</p>
+                    <button class="btn btn-primary" id="add-first-food">
+                        + Thêm thực phẩm đầu tiên
+                    </button>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination" id="pagination" style="display: none;">
+                    <button class="pagination-btn" id="prev-page" disabled>
+                        ← Trước
+                    </button>
+                    <div class="pagination-info">
+                        <span id="pagination-text">Trang 1 / 1</span>
+                    </div>
+                    <button class="pagination-btn" id="next-page" disabled>
+                        Tiếp →
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Add/Edit Food Modal -->
+    <div class="modal large" id="food-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Thêm thực phẩm mới</h3>
+                <button class="modal-close" id="close-food-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="food-form">
+                    <input type="hidden" id="food-id" name="id">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Tên thực phẩm *</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                placeholder="Nhập tên thực phẩm..."
+                                required
+                                maxlength="100"
+                            >
+                            <div class="form-error" id="name-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="brand">Thương hiệu</label>
+                            <input 
+                                type="text" 
+                                id="brand" 
+                                name="brand" 
+                                placeholder="Nhập thương hiệu..."
+                                maxlength="100"
+                            >
+                            <div class="form-error" id="brand-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="category">Danh mục *</label>
+                            <select id="category" name="category" required>
+                                <option value="">Chọn danh mục</option>
+                                <option value="grains">Ngũ cốc & Tinh bột</option>
+                                <option value="protein">Protein</option>
+                                <option value="vegetables">Rau củ</option>
+                                <option value="fruits">Trái cây</option>
+                                <option value="dairy">Sữa & Chế phẩm</option>
+                                <option value="beverages">Đồ uống</option>
+                                <option value="snacks">Đồ ăn vặt</option>
+                                <option value="other">Khác</option>
+                            </select>
+                            <div class="form-error" id="category-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="calories_per_100g">Calories (per 100g) *</label>
+                            <input 
+                                type="number" 
+                                id="calories_per_100g" 
+                                name="calories_per_100g" 
+                                placeholder="0"
+                                min="0"
+                                max="1000"
+                                step="0.1"
+                                required
+                            >
+                            <div class="form-error" id="calories_per_100g-error"></div>
+                        </div>
+                    </div>
+
+                    <h4>Thông tin dinh dưỡng (per 100g)</h4>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="protein_per_100g">Protein (g)</label>
+                            <input 
+                                type="number" 
+                                id="protein_per_100g" 
+                                name="protein_per_100g" 
+                                placeholder="0"
+                                min="0"
+                                max="100"
+                                step="0.1"
+                            >
+                            <div class="form-error" id="protein_per_100g-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="carbs_per_100g">Carbs (g)</label>
+                            <input 
+                                type="number" 
+                                id="carbs_per_100g" 
+                                name="carbs_per_100g" 
+                                placeholder="0"
+                                min="0"
+                                max="100"
+                                step="0.1"
+                            >
+                            <div class="form-error" id="carbs_per_100g-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fat_per_100g">Fat (g)</label>
+                            <input 
+                                type="number" 
+                                id="fat_per_100g" 
+                                name="fat_per_100g" 
+                                placeholder="0"
+                                min="0"
+                                max="100"
+                                step="0.1"
+                            >
+                            <div class="form-error" id="fat_per_100g-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fiber_per_100g">Fiber (g)</label>
+                            <input 
+                                type="number" 
+                                id="fiber_per_100g" 
+                                name="fiber_per_100g" 
+                                placeholder="0"
+                                min="0"
+                                max="100"
+                                step="0.1"
+                            >
+                            <div class="form-error" id="fiber_per_100g-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="sugar_per_100g">Sugar (g)</label>
+                            <input 
+                                type="number" 
+                                id="sugar_per_100g" 
+                                name="sugar_per_100g" 
+                                placeholder="0"
+                                min="0"
+                                max="100"
+                                step="0.1"
+                            >
+                            <div class="form-error" id="sugar_per_100g-error"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sodium_per_100g">Sodium (mg)</label>
+                            <input 
+                                type="number" 
+                                id="sodium_per_100g" 
+                                name="sodium_per_100g" 
+                                placeholder="0"
+                                min="0"
+                                max="10000"
+                                step="0.1"
+                            >
+                            <div class="form-error" id="sodium_per_100g-error"></div>
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-outline" id="cancel-food">
+                            Hủy
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="save-food-btn">
+                            <span class="btn-text">Lưu thực phẩm</span>
+                            <span class="btn-loading" style="display: none;">
+                                <span class="spinner"></span>
+                                Đang lưu...
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Food Details Modal -->
+    <div class="modal" id="food-details-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="food-details-title">Chi tiết thực phẩm</h3>
+                <button class="modal-close" id="close-food-details">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="food-details-content" id="food-details-content">
+                    <!-- Food details will be populated here -->
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" id="edit-food-btn">
+                        ✏️ Chỉnh sửa
+                    </button>
+                    <button type="button" class="btn btn-primary" id="add-to-meal-btn">
+                        + Thêm vào bữa ăn
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/auth.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Initialize foods page
+        document.addEventListener('DOMContentLoaded', function() {
+            FoodsManager.init();
+        });
+    </script>
+</body>
+</html>
