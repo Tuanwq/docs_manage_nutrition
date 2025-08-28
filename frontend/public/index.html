@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Management - Quản lý Dinh dưỡng</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>🥗 Nutrition Manager</h2>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#hero" class="nav-link">Trang chủ</a>
+                <a href="#features" class="nav-link">Tính năng</a>
+                <a href="#about" class="nav-link">Về chúng tôi</a>
+                <a href="/login" class="nav-link nav-login">Đăng nhập</a>
+                <a href="/register" class="nav-link nav-register">Đăng ký</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Quản lý Dinh dưỡng <br>
+                    <span class="highlight">Thông minh & Dễ dàng</span>
+                </h1>
+                <p class="hero-description">
+                    Theo dõi lượng calories, dinh dưỡng hàng ngày và xây dựng thói quen ăn uống lành mạnh 
+                    với hệ thống quản lý dinh dưỡng hiện đại.
+                </p>
+                <div class="hero-buttons">
+                    <a href="/register" class="btn btn-primary">Bắt đầu ngay</a>
+                    <a href="#features" class="btn btn-secondary">Tìm hiểu thêm</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-card">
+                    <div class="card-header">
+                        <h4>Hôm nay</h4>
+                        <span class="date" id="current-date"></span>
+                    </div>
+                    <div class="nutrition-stats">
+                        <div class="stat">
+                            <span class="stat-label">Calories</span>
+                            <span class="stat-value">1,847 / 2,200</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 84%"></div>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Protein</span>
+                            <span class="stat-value">92g / 110g</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 84%"></div>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Carbs</span>
+                            <span class="stat-value">275g / 330g</span>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 83%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tính năng nổi bật</h2>
+                <p>Tất cả những gì bạn cần để quản lý dinh dưỡng hiệu quả</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Theo dõi Calories</h3>
+                    <p>Ghi lại và theo dõi lượng calories tiêu thụ hàng ngày một cách chi tiết và chính xác</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍎</div>
+                    <h3>Cơ sở dữ liệu thực phẩm</h3>
+                    <p>Thông tin dinh dưỡng đầy đủ của hàng ngàn loại thực phẩm Việt Nam và quốc tế</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Giao diện thân thiện</h3>
+                    <p>Thiết kế đơn giản, dễ sử dụng trên mọi thiết bị từ điện thoại đến máy tính</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Báo cáo chi tiết</h3>
+                    <p>Thống kê và phân tích xu hướng dinh dưỡng giúp bạn cải thiện chế độ ăn</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Mục tiêu cá nhân</h3>
+                    <p>Thiết lập và theo dõi mục tiêu dinh dưỡng phù hợp với cơ thể và lối sống</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Bảo mật tuyệt đối</h3>
+                    <p>Thông tin cá nhân và dữ liệu sức khỏe được bảo vệ với công nghệ mã hóa tiên tiến</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Về dự án Nutrition Management</h2>
+                    <p>
+                        Đây là dự án Sprint 1 được phát triển bởi sinh viên năm 4 ngành Công nghệ phần mềm, 
+                        nhằm tạo ra một hệ thống quản lý dinh dưỡng hoàn chỉnh và hiệu quả.
+                    </p>
+                    <p>
+                        Sử dụng công nghệ hiện đại như HTML5, CSS3, JavaScript ES6, Node.js, Express.js 
+                        và MySQL để mang đến trải nghiệm người dùng tốt nhất.
+                    </p>
+                    <div class="tech-stack">
+                        <h4>Công nghệ sử dụng:</h4>
+                        <div class="tech-tags">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">JWT</span>
+                            <span class="tech-tag">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h3>1000+</h3>
+                        <p>Loại thực phẩm</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Theo dõi liên tục</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>Miễn phí</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>🔒</h3>
+                        <p>Bảo mật cao</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Bắt đầu hành trình sức khỏe của bạn</h2>
+                <p>Đăng ký ngay để trải nghiệm hệ thống quản lý dinh dưỡng hiện đại và hiệu quả</p>
+                <div class="cta-buttons">
+                    <a href="/register" class="btn btn-primary btn-large">Đăng ký miễn phí</a>
+                    <a href="/login" class="btn btn-outline btn-large">Đã có tài khoản</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🥗 Nutrition Manager</h3>
+                    <p>Hệ thống quản lý dinh dưỡng thông minh cho mọi người</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Liên kết</h4>
+                    <ul>
+                        <li><a href="#hero">Trang chủ</a></li>
+                        <li><a href="#features">Tính năng</a></li>
+                        <li><a href="#about">Về chúng tôi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Tài khoản</h4>
+                    <ul>
+                        <li><a href="/login">Đăng nhập</a></li>
+                        <li><a href="/register">Đăng ký</a></li>
+                        <li><a href="/dashboard">Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Hỗ trợ</h4>
+                    <ul>
+                        <li><a href="/api">API Documentation</a></li>
+                        <li><a href="/health">Health Check</a></li>
+                        <li><a href="mailto:support@nutrition.app">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Nutrition Management System. Phát triển bởi Nhóm 12 - Công nghệ phần mềm.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/assets/js/main.js"></script>
+</body>
+</html>
